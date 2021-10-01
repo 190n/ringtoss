@@ -1,7 +1,14 @@
 <script lang="ts">
-	import Counter from './lib/Counter.svelte'
+	import Config from './lib/Config.svelte';
+
+	let lastUpdate = '';
+
+	function simulate(data: any) {
+		lastUpdate = JSON.stringify(data.detail);
+	}
 </script>
 
 <main>
-	<Counter />
+	<Config on:simulate={simulate} />
+	<pre>{lastUpdate}</pre>
 </main>
