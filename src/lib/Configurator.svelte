@@ -1,5 +1,15 @@
+<script lang="ts" context="module">
+	export interface Configuration {
+		diameter: number;
+		rpm: number;
+		velocity: number;
+		angle: number;
+	}
+</script>
+
 <script lang="ts">
 	import { createEventDispatcher, afterUpdate } from 'svelte';
+
 	const dispatch = createEventDispatcher();
 
 	const G = 9.80665;

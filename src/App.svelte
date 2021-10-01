@@ -1,14 +1,16 @@
 <script lang="ts">
-	import Config from './lib/Config.svelte';
+	import Configurator, { Configuration } from './lib/Configurator.svelte';
+	import Simulator from './lib/Simulator.svelte';
 
-	let lastUpdate = '';
+	let config: Configuration;
 
-	function simulate(data: any) {
-		lastUpdate = JSON.stringify(data.detail);
+	function simulate({ detail }: CustomEvent<Configuration>) {
+		console.log(`got config: ${JSON.stringify(detail)}`);
+		config = detail;
 	}
 </script>
 
 <main>
-	<Config on:simulate={simulate} />
-	<pre>{lastUpdate}</pre>
+	<Configurator on:simulate={simulate} />
+	<Simulator {...config} />
 </main>
